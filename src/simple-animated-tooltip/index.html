@@ -1,0 +1,54 @@
+<!-- Template for Webpack HTML Plugin ! -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Tooltip with CSS</title>
+
+    <style>
+        .content {
+            position: relative;
+            width: 100%;
+        }
+
+        .tooltip {
+            position: absolute;
+            top: 30px;
+            left: -30px;
+            background: #000;
+            opacity: 0.89;
+            color: #fff;
+            padding: 15px;
+            transition: 500ms;
+            transform: scale(0);
+        }
+
+        .tooltip::before {
+            content: "";
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #000 transparent;
+            position: absolute;
+            top: -14%;
+            left: 35%;
+        }
+
+        .content:hover .tooltip {
+            transition: 500ms;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 600px; margin: 50px auto; display: flex; flex-direction: row;">
+        <div class="content">
+            <span>Hover Over Me 😃</span>
+            <div class="tooltip">
+                <div>Hi!</div>
+                <div>I am some custom tooltip 📌</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

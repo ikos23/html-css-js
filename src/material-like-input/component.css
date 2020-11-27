@@ -1,0 +1,33 @@
+.material-like-input-container {
+    padding: 10px;
+    position: relative;
+    background: none;
+}
+
+.material-like-input {
+    position: relative;
+    width: 200px;
+    background: none;
+    border-width: 0px;
+    border-bottom-width: 2px;
+    padding: 5px 5px 5px 2px;
+}
+
+.material-like-input:focus {
+    border-bottom-width: 3px;
+    outline-width: 0px;
+}
+
+.material-like-label {
+    color: grey;
+    top: 0;
+    left: 0;
+    position: absolute;
+    transition: 200ms;
+    transform: translate(12px, 14px);
+}
+
+.material-like-label-focused {
+    transition: 200ms;
+    transform: translate(1px, -6px) scale(0.75);
+}

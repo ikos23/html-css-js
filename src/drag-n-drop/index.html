@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag And Drop</title>
+    
+    <style>
+        .container {
+            width: 600px;
+            margin: auto;
+            display: flex;
+            background-color: rgb(244, 238, 255);
+        }
+
+        .container > div {
+            width: 50%;
+            padding: 15px;
+        }
+
+        div.leftPanel {
+            background-color: blue;
+            color: #fff;
+        }
+        div.rightPanel {
+            background-color: yellow;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="width: 100%;">
+            Try to move animal to the right column 😏 &nbsp;&nbsp;
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">API</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="leftPanel">
+            <div draggable="true">Cat 🐱</div>
+            <div draggable="true">Dog 🐶</div>
+            <div draggable="true">Fish 🐟</div>
+        </div>
+        <div class="rightPanel"></div>
+    </div>
+
+    <script>
+        // Making an element draggable requires adding the 'draggable' attribute
+        // and the 'ondragstart' global event handler!
+        const animals = document.querySelectorAll("div.leftPanel > div");
+        animals.forEach((node) => {
+            node.addEventListener("dragstart", (event) => {
+                // let's capture the drag data :)
+                event.dataTransfer.setData("text/plain", event.target.innerText);
+                event.dataTransfer.dropEffect = "move";
+            });    
+        });
+
+        // So that an element becomes a drop zone or is droppable, 
+        // the element must have both 'ondragover' and 'ondrop' event handler attributes!
+        const dropZone = document.querySelector("div.rightPanel");
+        dropZone.addEventListener("drop", (event) => {
+            event.preventDefault();
+            const animal = event.dataTransfer.getData("text/plain");
+            
+            // add as a new element
+            const newDiv = document.createElement("div");
+            newDiv.appendChild(document.createTextNode(animal));
+            dropZone.appendChild(newDiv);
+
+            // we can also delete node from left panel
+            const updatedAnimals = [];
+            document
+                .querySelectorAll("div.leftPanel > div")
+                .forEach((node) => {
+                    if (node.innerText != animal) updatedAnimals.push(node);
+                });
+                
+            document.querySelector("div.leftPanel").innerHTML = "";
+            updatedAnimals.forEach((a) => {
+                document.querySelector("div.leftPanel").appendChild(a);
+            })
+        });
+        dropZone.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = "move";
+        });
+    </script>
+</body>
+</html>

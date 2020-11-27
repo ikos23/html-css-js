@@ -1,0 +1,72 @@
+<!-- Template for Webpack HTML Plugin ! -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Label Input</title>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+        .container > div:first-child {
+            margin-right: 50px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #e2ffea;">
+    <div class="container">
+        <div>
+            <h3>This is input with floating label:</h3>
+            <!-- ---------------------------------- -->
+            <!-- all you need is name attr          -->
+            <div>
+                <label>First Name</label>
+                <input name="firstName" />
+            </div>
+            <!-- ---------------------------------- -->
+            <br>
+            <div>
+
+<pre>
+  <strong>HTML:</strong>
+
+  &lt;div&gt;
+    &lt;label&gt;First Name&lt;/label&gt;
+    &lt;input name="firstName" /&gt;
+  &lt;/div&gt;
+  
+  <strong>JS:</strong>
+  
+  initMaterialInput("firstName");
+</pre>
+            </div>
+        </div>
+
+        <div>
+            <h3>This is regular input:</h3>
+            <div style="padding: 10px;">
+                <label>Last Name</label>
+                <input name="lastName" />
+            </div>
+            <br>
+            <div>
+<pre>
+    <strong>HTML:</strong>
+
+    &lt;div&gt;
+        &lt;label&gt;Last Name&lt;/label&gt;
+        &lt;input name="lastName" /&gt;
+    &lt;/div&gt;
+</pre>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
